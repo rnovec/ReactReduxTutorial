@@ -2,10 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
-const name = "David";
-const el = <p>Hello, {name}</p>;
+let counter = 0;
 
-ReactDOM.render(
-  el,
-  document.getElementById('root')
-); 
+function show() {
+  counter++;
+  const el = <p>{counter}</p>;
+  ReactDOM.render(
+    el, document.getElementById('root')
+  );
+}
+
+setInterval(show, 1000); 

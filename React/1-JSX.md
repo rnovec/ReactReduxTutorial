@@ -66,3 +66,46 @@ When using a JavaScript expression as the attributes value, the quotes should no
 
 > React DOM uses **camelCase** property naming convention instead of HTML attribute names.
 > For example, **class** becomes **className** in JSX.
+
+## How Does JSX Work?
+
+When the JSX expressions are compiled, they are converted into JavaScript **objects**, representing React elements.
+React then uses these elements to build the corresponding **HTML DOM** and display it in the browser.
+
+Let's create a counter app, that increments a counter variable every second and displays it on the page as a paragraph:
+
+```js
+let counter = 0;
+
+function show() {
+  counter++;
+  const el = <p>{counter}</p>;
+  ReactDOM.render(
+    el, document.getElementById('root')
+  );
+}
+
+setInterval(show, 1000); 
+```
+
+[Try it on StackBlitz](https://stackblitz.com/edit/react-jsx-counter-example?file=index.js)
+
+We use **setInterval** to call the **show** function every second and render the counter element on the page.
+
+One of the great features of React is that it updates only the elements that need an update. You can inspect the HTML output of the example above and see that only the text in the paragraph gets updated every second.
+
+> In practice, most React apps call ReactDOM.render() once.
+> We will learn how to update elements without calling the render method in the next lessons.
+
+## Virtual DOM
+
+We learned in the previous part that React updates only the elements that are necessary.
+This allows React apps to be much faster than apps built with other front-end technologies.
+
+#### But how does React achieve that?
+React uses a **Virtual DOM**, which is a lightweight representation of the DOM.
+When an element gets changed, it is first updated in the Virtual DOM. That process is fast, as the virtual DOM is represented by simple objects.
+
+After that, React compares the Virtual DOM to its previous state and only applies the DOM updates necessary to bring the DOM to the desired state.
+
+> **DOM** stands for **D**ocument **O**bject **M**odel and is a tree-like representation of the HTML page.
