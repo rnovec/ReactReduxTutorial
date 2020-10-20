@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
-let counter = 0;
-
-function show() {
-  counter++;
-  const el = <p>{counter}</p>;
-  ReactDOM.render(
-    el, document.getElementById('root')
-  );
+function Hello() {
+  return <h1>Hello world.</h1>;
 }
 
-setInterval(show, 1000); 
+const el = <Hello />; 
+ReactDOM.render(
+  el, 
+  document.getElementById('root')
+);
+
