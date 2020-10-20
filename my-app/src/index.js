@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
-function Hello() {
-  return <h1>Hello world.</h1>;
+function Hello(props) {
+  return <p>Hello, {props.name}!</p>;
 }
 
 // class Hello extends React.Component {
@@ -12,7 +12,7 @@ function Hello() {
 //  }
 // }
 
-const el = <Hello />; 
+const el = <Hello name="David" />; 
 ReactDOM.render(
   el, 
   document.getElementById('root')
