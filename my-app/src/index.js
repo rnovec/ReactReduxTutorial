@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
+const name = "David";
+const el = <p>Hello, {name}</p>;
+
 ReactDOM.render(
-  <h1>Hello, React!</h1>,
+  el,
   document.getElementById('root')
-);
+); 
