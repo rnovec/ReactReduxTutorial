@@ -6,17 +6,18 @@ import './style.css';
 //  return <p>Hello, {props.name}!</p>;
 // }
 
-class Hello extends React.Component {
-  render() {
-    return <p>Hello, {this.props.name}!</p>;
-  }
-} 
+function Item(props) {
+  return <div className="item">
+  <b>Name:</b> {props.name} <br />
+  <b>Price:</b> {props.price}
+  </div>;
+}
 
 function App() {
   return <div>
-    <Hello name="David" />
-    <Hello name="James" />
-    <Hello name="Amy" />
+    <Item name="Cheese" price="4.99" />
+    <Item name="Bread" price="1.5" />
+    <Item name="Ice cream" price="24" />
   </div>;
 }
 
