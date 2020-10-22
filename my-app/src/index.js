@@ -1,29 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './style.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './style.css'
 
-// function Hello(props) {
-//  return <p>Hello, {props.name}!</p>;
-// }
-
-function Item(props) {
-  return <div className="item">
-  <b>Name:</b> {props.name} <br />
-  <b>Price:</b> {props.price}
-  </div>;
+class Counter extends React.Component {
+  state = {
+    counter: 0
+  }
+  increment = () => {
+    this.setState({
+      counter: this.state.counter + 1
+    })
+  }
+  render () {
+    return (
+      <div>
+        <p>{this.state.counter}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    )
+  }
 }
 
-function App() {
-  return <div>
-    <Item name="Cheese" price="4.99" />
-    <Item name="Bread" price="1.5" />
-    <Item name="Ice cream" price="24" />
-  </div>;
-}
+const el = <Counter />
 
-const el = <App />; 
-
-ReactDOM.render(
-  el, 
-  document.getElementById('root')
-);
+ReactDOM.render(el, document.getElementById('root'))
