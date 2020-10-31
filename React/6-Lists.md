@@ -44,4 +44,5 @@ Then, the component returns the listItems array inside a `<ul>` tag.
 ```js
 const listItems = arr.map((val, index) => <li key={index}>{val}</li>)
 ```
+
 > Keys are important, because they uniquely identify elements, helping React understand which items have changed, are added, or are removed.
