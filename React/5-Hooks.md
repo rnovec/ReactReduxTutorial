@@ -113,12 +113,89 @@ function Counter () {
   )
 }
 ```
+
 When you run the code, you'll notice that the alert dialog appears also during the first render. This is caused by the fact that, by default, **useEffect** runs both, after the first render and after every update.
 
 To call the method only when something changes, we can provide it a second argument:
 
 ```js
 useEffect(() => {
-//do something
-}, [count]);
+  //do something
+}, [count])
 ```
+
+## Event Handling
+
+Handling events in **React** is very similar to handling events in the DOM.
+
+The only difference is that event names use camelCase syntax and the event handler needs to be passed in curly braces.
+
+#### For example, to handle the click event on a button:
+
+```js
+<button onClick={handleClick}>My Button</button>
+```
+
+Clicking the button will call the `handleClick` function of the component.
+
+#### Let's explore our Counter app:
+
+```js
+function Counter () {
+  const [counter, setCounter] = useState(0)
+
+  function increment () {
+    setCounter(counter + 1)
+  }
+  return (
+    <div>
+      <p>{counter}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  )
+}
+```
+
+The `onClick` event calls the **increment** function, which is incrementing the counter state v
+
+> Check out the same Counter app built using a class component [here](https://stackblitz.com/edit/react-state-counter-example?file=index.js).
+
+## Handling User Input
+
+One of the common ways that users interact with web pages is through text fields.
+
+We can handle user input in React using the `onChange` event of the text field.
+When the value of the text field changes, the event handler is called, updating the value of the field in the component's state.
+This way you always have the actual value of the text field in the state.
+
+Let's make an app to convert Km to Miles. We will take the Km value from a text field and calculate the miles value upon input:
+
+```js
+function Converter () {
+  const [km, setKm] = useState(0)
+
+  function handleChange (e) {
+    setKm(e.target.value)
+  }
+  function convert (km) {
+    return (km / 1.609).toFixed(2)
+  }
+
+  return (
+    <div>
+      <input type='text' value={km} onChange={handleChange} />
+
+      <p>
+        {' '}
+        {km} km is {convert(km)} miles{' '}
+      </p>
+    </div>
+  )
+}
+```
+
+Our Converter component includes a text field, which calls the `handleChange` function when its value changes.
+The handleChange function updates the state with the current value of the textfield, causing the component to re-render and show the corresponding miles value, which is calculated using the **convert** function.
+
+> The value of the text field is accessed via the e object, which represents the React event. It is passed to the event handler function as an argument and can be used to access the event object.
+
