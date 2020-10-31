@@ -84,4 +84,41 @@ componentDidUpdate() {
     alert("Number of clicks: " + this.state.counter);
 }
 ```
+
 > **componentDidUpdate()** is only called when the component is updated.
+
+## The useEffect Hook
+
+The lifecycle methods we covered are only available for class components.
+However, React provides a special Hook called useEffect to make lifecycle methods available in functional components. It combines the componentDidMount, componentDidUpdate, and componentWillUnmount methods into one.
+
+For example, we can achieve the behavior of our last example using a functional Counter component:
+
+```js
+function Counter () {
+  const [counter, setCounter] = useState(0)
+
+  useEffect(() => {
+    alert('Number of clicks: ' + counter)
+  })
+
+  function increment () {
+    setCounter(counter + 1)
+  }
+  return (
+    <div>
+      <p>{counter}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  )
+}
+```
+When you run the code, you'll notice that the alert dialog appears also during the first render. This is caused by the fact that, by default, **useEffect** runs both, after the first render and after every update.
+
+To call the method only when something changes, we can provide it a second argument:
+
+```js
+useEffect(() => {
+//do something
+}, [count]);
+```
