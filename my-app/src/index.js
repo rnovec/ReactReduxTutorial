@@ -2,28 +2,30 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import './style.css'
 
-function Converter () {
-  const [km, setKm] = useState(0)
+function AddForm () {
+  const [sum, setSum] = useState(0)
+  const [num, setNum] = useState(0)
 
   function handleChange (e) {
-    setKm(e.target.value)
+    setNum(e.target.value)
   }
-  function convert (km) {
-    return (km / 1.609).toFixed(2)
+
+  function handleSubmit (e) {
+    setSum(sum + Number(num))
+    e.preventDefault()
   }
 
   return (
-    <div>
-      <input type='text' value={km} onChange={handleChange} />
+    <form onSubmit={handleSubmit}>
+      <input type='number' value={num} onChange={handleChange} />
+      <input type='submit' value='Add' />
 
-      <p>
-        {' '}
-        {km} km is {convert(km)} miles{' '}
-      </p>
-    </div>
+      <p> Sum is {sum} </p>
+    </form>
   )
 }
 
-const el = <Converter />
+
+const el = <AddForm />
 
 ReactDOM.render(el, document.getElementById('root'))

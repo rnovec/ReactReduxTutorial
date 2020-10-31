@@ -199,3 +199,43 @@ The handleChange function updates the state with the current value of the textfi
 
 > The value of the text field is accessed via the e object, which represents the React event. It is passed to the event handler function as an argument and can be used to access the event object.
 
+## Forms
+
+In the previous part, we learned how to handle user input in text fields. Text fields are usually part of a form.
+
+Similar to the previous example, React form elements keep their state and update it based on user input.
+This way you always have the data of your form at your disposal in the state.
+
+To demonstrate this, we will create a form, that will add numbers every time the form is submitted and display the sum.
+Our form contains an input field and a submit button:
+
+```js
+function AddForm () {
+  const [sum, setSum] = useState(0)
+  const [num, setNum] = useState(0)
+
+  function handleChange (e) {
+    setNum(e.target.value)
+  }
+
+  function handleSubmit (e) {
+    setSum(sum + Number(num))
+    e.preventDefault()
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type='number' value={num} onChange={handleChange} />
+      <input type='submit' value='Add' />
+
+      <p> Sum is {sum} </p>
+    </form>
+  )
+}
+```
+In the code above, the value of the input is controlled by React (we keep the value in the state).
+When the form is submitted using the submit button, the **handleSubmit** function gets called, which updates the value of sum in the state.
+
+An input form element whose value is controlled by React in this way is called a "**controlled component**".
+
+> Notice the `e.preventDefault();` statement. This statement prevents the default behavior of the form, which, by default, reloads the page when submitted. In JavaScript we would use `return false;` for that, but in React we need to call **preventDefault()**.
