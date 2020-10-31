@@ -10,7 +10,7 @@ Run the following commands in the Terminal to create and start a React app calle
 
     npx create-react-app my-app
     cd my-app
-    npm start 
+    npm start
 
 This will install all the required dependencies, configure and start the project on **localhost:3000**.
 
@@ -41,21 +41,20 @@ Webpack creates a "bundle" file containing the content of multiple files that ne
 > Remember, all CSS and JS files need to be added to the src folder, otherwise webpack won't see them.
 
 While there are other files in the **src** folder that come with **Create React App** when it is generated, the two files below are the only critical files:
-* **index.js**: This file is the entry point into our application. In our code, a method called `ReactDOM.render()` is used to find an element with `id="root"` in the HTML and add our React application inside of that element (similar to the previous lesson).
-* **App.js**: This file is the main **component** that will be rendered to the **DOM**, which currently includes the React logo image and the default text, that we see in the output.
+
+- **index.js**: This file is the entry point into our application. In our code, a method called `ReactDOM.render()` is used to find an element with `id="root"` in the HTML and add our React application inside of that element (similar to the previous lesson).
+- **App.js**: This file is the main **component** that will be rendered to the **DOM**, which currently includes the React logo image and the default text, that we see in the output.
 
 > We will learn about components in the upcoming lessons.
 
 ## Changing the Output
+
 Now, when we know how to create and run a React project, let's change the default output to a simple Hello message.
 
 To do that, we need to open **src/index.js** and change the code to the following:
 
 ```js
-ReactDOM.render(
-  <h1>Hello, React!</h1>,
-  document.getElementById('root')
-);
+ReactDOM.render(<h1>Hello, React!</h1>, document.getElementById('root'))
 ```
 
 This will output the message as a heading:
@@ -72,11 +71,11 @@ Here is the the same project on StackBlitz:
 
 ![](https://api.sololearn.com/DownloadFile?id=4389)
 
-
 [Try it on StackBlitz](https://stackblitz.com/edit/hello-react-example?file=index.js)
 
 We have removed all the extra files, such as the logo images, to make the project structure simpler.
 Now we have the following files:
+
 - **index.html**: The HTML page template.
 - **index.js**: The entry point of our app.
 - **style.css**: the stylesheet for our project.

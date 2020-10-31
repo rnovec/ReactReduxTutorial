@@ -5,15 +5,15 @@ Functional components can accept arguments, similar to JavaScript functions. The
 For example, we can use **props** in our Hello component:
 
 ```js
-function Hello(props) {
-  return <p>Hello, {props.name}!</p>;
+function Hello (props) {
+  return <p>Hello, {props.name}!</p>
 }
 ```
 
 Now, we can add a name attribute to our element:
 
 ```js
-const el = <Hello name="David" />;
+const el = <Hello name='David' />
 ```
 
 The attribute value will be passed to the component when rendered.
@@ -27,14 +27,14 @@ Components can use other components to generate an output.
 #### For example:
 
 ```js
-function App() {
+function App () {
   return (
     <div>
-      <Hello name="David" />
-      <Hello name="James" />
-      <Hello name="Amy" />
+      <Hello name='David' />
+      <Hello name='James' />
+      <Hello name='Amy' />
     </div>
-  );
+  )
 }
 ```
 
@@ -48,13 +48,15 @@ Here, our **App** component uses the **Hello** component three times, each times
 Props can be accessed in class components using **this.props**.
 
 #### For example:
+
 ```js
 class Hello extends React.Component {
-  render() {
-    return <p>Hello, {this.props.name}!</p>;
+  render () {
+    return <p>Hello, {this.props.name}!</p>
   }
-} 
+}
 ```
+
 An important thing to consider is that props are read-only, meaning components cannot modify their props.
 
 > Interactive apps generally need to change data and the page elements.

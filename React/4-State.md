@@ -13,11 +13,11 @@ For example:
 ```js
 class Hello extends React.Component {
   state = {
-    name: "James"
+    name: 'James'
   }
 
-  render() {
-    return <h1>Hello {this.state.name}.</h1>;
+  render () {
+    return <h1>Hello {this.state.name}.</h1>
   }
 }
 ```
@@ -30,14 +30,16 @@ Now, when the component renders, the state is initialized with the given value a
 > The **state** object can contain multiple key:value pairs, separated by commas.
 
 ## Changing State
+
 State should not be modified directly. Instead, React provides a **setState()** method, that can be used to modify state.
 
 ```js
-this.setState({ 
-  name: "James",
+this.setState({
+  name: 'James',
   age: 25
-}); 
+})
 ```
+
 You need to pass an object with the new key:value pairs to the **setState** method.
 
 Why should we use **setState**, instead of simply changing the values of the object properties directly?
@@ -48,6 +50,7 @@ Usually, the change in state happens in event handlers. We will look at an examp
 > When state changes using the setState method, React gets informed and immediately re-renders the component with the updated state.
 
 ## Counter App
+
 To better understand how state works, let's create a counter app, which increments the counter each time a button is clicked.
 We start by creating our Counter component, which includes the counter and a button:
 
@@ -56,14 +59,17 @@ class Counter extends React.Component {
   state = {
     counter: 0
   }
-  render() {
-    return <div>
-    <p>{this.state.counter}</p>
-    <button>Increment</button>
-    </div>;
+  render () {
+    return (
+      <div>
+        <p>{this.state.counter}</p>
+        <button>Increment</button>
+      </div>
+    )
   }
-}  
+}
 ```
+
 We have initialized our **counter** to the value 0 in the state.
 
 Now, we need to add a click event handler to the button and increment the counter in the state.
@@ -76,22 +82,27 @@ class Counter extends React.Component {
   }
   increment = () => {
     this.setState({
-     counter: this.state.counter+1});
+      counter: this.state.counter + 1
+    })
   }
-  render() {
-    return <div>
-    <p>{this.state.counter}</p>
-    <button onClick={this.increment}>Increment</button>
-    </div>;
+  render () {
+    return (
+      <div>
+        <p>{this.state.counter}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    )
   }
 }
 ```
+
 The `onClick` event calls the **increment** function of our component, which uses **setState** to change the value of our counter. When the state is changed, React automatically triggers a re-render of the component.
 
 > Notice that the event handler uses camelCase syntax and that the handler function is passed in curly braces.
 > We will cover event handlers in more detail in the next lessons.
 
 ## Props vs State
+
 As a recap, here is a summary of the main differences between **props** and **state**:
 
 - We use **props** to pass data to components.

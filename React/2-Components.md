@@ -21,10 +21,11 @@ In this part, we will talk about functional components.
 A functional component is a simple JavaScript function:
 
 ```js
-function Hello() {
-  return <h1>Hello world.</h1>;
+function Hello () {
+  return <h1>Hello world.</h1>
 }
 ```
+
 The code above defined a functional component called **Hello**, that returns a simple React element.
 
 > Notice that the name of the functional component begins with a **capital letter**. This is absolutely critical. If we start the name of a component with a lowercase letter, the browser will treat our component like a regular HTML element instead of a Component.
@@ -36,20 +37,18 @@ In order to display the component, we need to create the corresponding JSX eleme
 For example, for our user-defined component Hello:
 
 ```js
-const el = <Hello />;
+const el = <Hello />
 ```
 
 Now, we can use our user-defined element and render it on the page:
+
 ```js
-function Hello() {
-  return <h1>Hello world.</h1>;
+function Hello () {
+  return <h1>Hello world.</h1>
 }
 
-const el = <Hello />; 
-ReactDOM.render(
-  el, 
-  document.getElementById('root')
-);
+const el = <Hello />
+ReactDOM.render(el, document.getElementById('root'))
 ```
 
 ## Class Components
@@ -62,8 +61,8 @@ We can rewrite our **Hello** functional component as a class component:
 
 ```js
 class Hello extends React.Component {
-  render() {
-    return <h1>Hello world.</h1>;
+  render () {
+    return <h1>Hello world.</h1>
   }
 }
 ```

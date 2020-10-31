@@ -233,6 +233,7 @@ function AddForm () {
   )
 }
 ```
+
 In the code above, the value of the input is controlled by React (we keep the value in the state).
 When the form is submitted using the submit button, the **handleSubmit** function gets called, which updates the value of sum in the state.
 

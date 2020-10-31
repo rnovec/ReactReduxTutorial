@@ -1,5 +1,5 @@
 # What is Front-End Development?
- 
+
 **Front-end development** refers to what the end user (also commonly referred to as the "**client**") can see. In the most basic forms, front-end development consists of HTML, CSS, and JavaScript.
 
 As a developer, you will find that it is very easy for your front-end (website, web application, etc.) to become very complex and have a lot of different moving parts. It makes solving problems much more difficult when you have to go through a maze of code to find the issue.
@@ -23,9 +23,11 @@ Compared to other libraries that manipulate the DOM, React uses a **Virtual DOM*
 > We will learn more about the **Virtual DOM** in the coming lessons.
 
 #### Ease of Use
+
 React allows developers to group related code together, thereby making building and maintaining large scale applications much less complex.
 
 #### Support
+
 React has an amazingly large community and is open source. It is maintained by Facebook and the community.
 
 > Let's get started and dive into building our first React app!
