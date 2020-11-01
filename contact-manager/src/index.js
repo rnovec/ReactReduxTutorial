@@ -9,9 +9,13 @@ function AddPersonForm (props) {
     setPerson(e.target.value) // set new name
   }
 
-  function handleSubmit (e) {
-    props.handleSubmit(person) // call parent event
-    setPerson('') // empty input
+  function handleSubmit(e) {
+    // if person is not null
+    if (person !== '') {
+      props.handleSubmit(person) // call parent event
+      setPerson('') // empty input
+    }
+
     e.preventDefault() // avoid page reload
   }
   return (
