@@ -45,12 +45,17 @@ function PeopleList (props) {
     props.handleDelete(person) // call parent event
   }
 
+  function handleEdit (oldName) {
+    const newName = prompt(`Enter the new name for ${oldName}:`)
+    props.handleEdit(oldName, newName) // call parent event
+  }
+
   // render array elements using `map` built-in function
   const listItems = arr.map((name, index) => (
     <li key={index}>
       {name} &nbsp;{' '}
       <i className={iconDelete} onClick={() => handleDelete(name)}></i>{' '}
-      <i className={iconEdit}></i>
+      <i className={iconEdit} onClick={() => handleEdit(name)}></i>
     </li>
   ))
   return <ul>{listItems}</ul>
@@ -68,7 +73,9 @@ function ContactManager (props) {
    * @param {String} name
    */
   function addPerson (name) {
-    setContacts([...contacts, name])
+    let index = contacts.indexOf(name) // find element by name
+    if (index === -1) setContacts([...contacts, name])
+    else alert('Contact already exists!')
   }
 
   function deletePerson (name) {
@@ -80,12 +87,25 @@ function ContactManager (props) {
     }
   }
 
+  function editPerson (oldName, newName) {
+    let array = [...contacts] // create a copy of array
+    let index = array.indexOf(oldName) // find element by name
+    if (index !== -1) {
+      array[index] = newName // update item name
+      setContacts([...array]) // update state
+    }
+  }
+
   return (
     <div className='container'>
       <h1>Contact Manager</h1>
       {/* Listen for handleSubmit child event */}
       <AddPersonForm handleSubmit={addPerson} />
-      <PeopleList data={contacts} handleDelete={deletePerson} />
+      <PeopleList
+        data={contacts}
+        handleEdit={editPerson}
+        handleDelete={deletePerson}
+      />
     </div>
   )
 }
