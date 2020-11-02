@@ -10,8 +10,7 @@ function AddPersonForm (props) {
   }
 
   function handleSubmit (e) {
-    // if person is not null
-    if (person !== '') {
+    if (person.trim()) {
       props.handleSubmit(person) // call parent event
       setPerson('') // empty input
     }
@@ -47,13 +46,13 @@ function PeopleList (props) {
 
   function handleEdit (oldName) {
     const newName = prompt(`Enter the new name for ${oldName}:`)
-    props.handleEdit(oldName, newName) // call parent event
+    if (newName.trim()) props.handleEdit(oldName, newName) // call parent event
   }
 
   // render array elements using `map` built-in function
   const listItems = arr.map((name, index) => (
     <li key={index}>
-      {name} &nbsp;{' '}
+      {name} &nbsp; {/* send custom params to function */}
       <i className={iconDelete} onClick={() => handleDelete(name)}></i>{' '}
       <i className={iconEdit} onClick={() => handleEdit(name)}></i>
     </li>
