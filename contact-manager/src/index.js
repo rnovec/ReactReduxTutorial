@@ -9,7 +9,7 @@ function AddPersonForm (props) {
     setPerson(e.target.value) // set new name
   }
 
-  function handleSubmit(e) {
+  function handleSubmit (e) {
     // if person is not null
     if (person !== '') {
       props.handleSubmit(person) // call parent event
@@ -38,8 +38,21 @@ function AddPersonForm (props) {
  */
 function PeopleList (props) {
   const arr = props.data
+  const iconDelete = 'del-button mdi mdi-trash-can-outline'
+  const iconEdit = 'del-button mdi mdi-pencil-outline'
+
+  function handleDelete (person) {
+    props.handleDelete(person) // call parent event
+  }
+
   // render array elements using `map` built-in function
-  const listItems = arr.map((val, index) => <li key={index}>{val}</li>)
+  const listItems = arr.map((name, index) => (
+    <li key={index}>
+      {name} &nbsp;{' '}
+      <i className={iconDelete} onClick={() => handleDelete(name)}></i>{' '}
+      <i className={iconEdit}></i>
+    </li>
+  ))
   return <ul>{listItems}</ul>
 }
 
@@ -48,7 +61,7 @@ function PeopleList (props) {
  */
 function ContactManager (props) {
   // share state passing props data
-  const [contacts, setContacts] = useState(props.data)
+  let [contacts, setContacts] = useState(props.data)
 
   /**
    * Handle child event and update main array
@@ -58,11 +71,21 @@ function ContactManager (props) {
     setContacts([...contacts, name])
   }
 
+  function deletePerson (name) {
+    let array = [...contacts] // create a copy of array
+    let index = array.indexOf(name) // find element by name
+    if (index !== -1) {
+      array.splice(index, 1) // delete item
+      setContacts([...array]) // update state
+    }
+  }
+
   return (
-    <div>
+    <div className='container'>
+      <h1>Contact Manager</h1>
       {/* Listen for handleSubmit child event */}
       <AddPersonForm handleSubmit={addPerson} />
-      <PeopleList data={contacts} />
+      <PeopleList data={contacts} handleDelete={deletePerson} />
     </div>
   )
 }
