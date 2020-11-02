@@ -13,14 +13,6 @@ const initialState = {
 }
 
 /**
- * Action creator
- * @param {Number} num value to increment
- */
-export function incrementCounter (num) {
-  return { type: 'INCREMENT', num }
-}
-
-/**
  * Reducer creator
  * @param {*} state initial store's state
  * @param {*} action action to execute
@@ -33,23 +25,6 @@ export function reducer (state = initialState, action) {
     default:
       return state // for unknown actions return state
   }
-}
-
-/**
- * Map state with component props
- * @param {*} state 
- */
-export function mapStateToProps (state) {
-  return {
-    count: state.count
-  }
-}
-
-/**
- * Actions mapped
- */
-export const mapDispatchToProps = {
-  incrementCounter
 }
 
 // create store with reducer creator

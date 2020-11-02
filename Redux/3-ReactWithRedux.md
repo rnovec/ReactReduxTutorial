@@ -167,3 +167,28 @@ Remember, **connect()** returns a new component, which wraps the component it re
 
 > Now we have a fully functional React+Redux app!
 > This might seem too much code for a simple counter app, however this architecture is great when building large scale apps, that use many components, multiple levels of nesting and manage a lot of data.
+
+## Project Structure
+
+In our Counter example, we wrote the whole code in a single source file.
+Usually, web apps contain multiple component, reducers and actions.
+
+To make our project more manageable, we can use separate source files (and folders) for components, reducers and actions.
+
+For example, we can move our Counter component and the action creator function to a separate `Counter.js` file.
+
+In order to use the Counter component in our `index.js`, we need to export it first:
+
+```js
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+```
+
+Notice, we export the connected component.
+
+Now, we can import the component in `index.js`:
+
+```js
+import Counter from './Counter'
+```
+
+> We use the **ES6 modules system**, which allows use to export and import modules.
