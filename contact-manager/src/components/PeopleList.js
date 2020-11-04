@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { mapStateToProps } from '../store'
+import { removeContact, editContact } from '../store/actions'
 
 /**
  * People component to render a list of names
@@ -34,28 +35,8 @@ function PeopleList (props) {
  * Actions mapped
  */
 export const mapDispatchToProps = {
-  /**
-   * Action creator
-   * @param {String} name name to remove
-   */
-  removeContact (name) {
-    return { type: 'REMOVE_CONTACT', name }
-  },
-
-  /**
-   * Action creator
-   * @param {String} oldName name to change
-   * @param {String} newName new name 
-   */
-  editContact (oldName, newName) {
-    return {
-      type: 'EDIT_CONTACT',
-      payload: {
-        oldName,
-        newName
-      }
-    }
-  }
+  removeContact,
+  editContact
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PeopleList)

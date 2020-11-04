@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps } from '../store'
+import { addContact } from '../store/actions'
 
 function AddPersonForm (props) {
   const [person, setPerson] = useState('') // set default value
@@ -38,13 +39,7 @@ function AddPersonForm (props) {
  * Actions mapped
  */
 export const mapDispatchToProps = {
-  /**
-   * Action creator
-   * @param {String} contact name to add
-   */
-  addContact (contact) {
-    return { type: 'ADD_CONTACT', contact }
-  }
+  addContact
 }
 
 // connect function allows combining React+Redux
