@@ -10,7 +10,7 @@ export default function Tarea2 () {
 
   const onSubmit = e => {
     e.preventDefault()
-    if (list.indexOf(name.trim()) === -1) setList([...list, name])
+    setList([...list, name])
     setName('')
   }
   return (
