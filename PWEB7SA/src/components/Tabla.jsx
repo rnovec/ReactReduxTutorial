@@ -54,6 +54,7 @@ function App () {
         onChange={handleChange}
       ></input>
       {/* <button onClick={increment}>Increment</button> */}
+      <br/>
       <Tabla num={number} />
     </div>
   )
