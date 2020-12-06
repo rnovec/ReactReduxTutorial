@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function Tarea1 () {
   const [inputValue, setInputValue] = useState('')
-  const [result, setResult] = useState('')
+  const [results, setResult] = useState([])
 
   const onChange = e => {
     setInputValue(e.target.value)
@@ -10,7 +10,8 @@ export default function Tarea1 () {
 
   const onSubmit = e => {
     e.preventDefault()
-    setResult(`${inputValue} mi = ${parseFloat(inputValue) * 1.60934} km`)
+    let r = `${inputValue} mi = ${parseFloat(inputValue) * 1.60934} km`
+    setResult([...results, r])
     setInputValue('')
   }
   return (
@@ -36,11 +37,11 @@ export default function Tarea1 () {
             Convertir millas a Kilometros
           </button>
 
-          {!!result && (
-            <div className='pt-3'>
-              <h2>{result}</h2>
-            </div>
-          )}
+          <div className='pt-3'>
+            {results.map((result, index) => (
+              <h2 key={index}>{result}</h2>
+            ))}
+          </div>
         </form>
       </div>
     </div>

@@ -38,12 +38,12 @@ const Layout = ({ children }) => {
           </li>
 
           <li className='nav-item active'>
-            <Link to='/assigment1' className='nav-link'>
+            <Link to='/assignment1' className='nav-link'>
               Tarea1
             </Link>
           </li>
           <li className='nav-item active'>
-            <Link to='/assigment2' className='nav-link'>
+            <Link to='/assignment2' className='nav-link'>
               Tarea2
             </Link>
           </li>

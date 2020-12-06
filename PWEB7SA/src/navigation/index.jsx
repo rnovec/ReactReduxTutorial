@@ -8,10 +8,10 @@ const Routes = () => {
     <Router>
       <Layout>
         <Switch>
-           <Route path='/assigment1'>
+           <Route path='/assignment1'>
             <Tarea1 />
           </Route>
-          <Route path='/assigment2'>
+          <Route path='/assignment2'>
             <Tarea2 />
           </Route>
           <Route path='/table'>
